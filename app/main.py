@@ -10,6 +10,8 @@ from app.models.user import User
 from fastapi import HTTPException
 from app.core.security import hash_password
 from app.routers import auth
+from app.routers import notes
+
 
 
 
@@ -17,6 +19,7 @@ app  = FastAPI()
 
 
 app.include_router(auth.router)
+app.include_router(notes.router)
 
 
 # Root endpoint that is called when the base URL ("/") is accessed
