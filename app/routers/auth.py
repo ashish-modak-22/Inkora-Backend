@@ -8,6 +8,7 @@ from app.models.user import User
 from app.schemas.user import UserRegister, UserResponse, UserLogin, Token
 from app.core.security import hash_password, verify_password, create_access_token, get_current_user
 from fastapi.security import OAuth2PasswordBearer
+from fastapi.security import OAuth2PasswordRequestForm
 
 
 
@@ -50,7 +51,7 @@ async def register(
 
 @router.post("/login", response_model=Token)
 async def login(
-    user: UserLogin,
+    user: OAuth2PasswordRequestForm = Depends(),
     db: Session = Depends(get_db)
 ):
     
