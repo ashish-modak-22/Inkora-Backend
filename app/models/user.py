@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String
 from app.database import Base
-from sqlalchemy.orm import realtionship
+from sqlalchemy.orm import relationship
 
 
 
@@ -15,4 +15,4 @@ class User(Base):
     password_hash = Column(String, nullable=False)
 
     # One user multiple notes
-    notes = realtionship("Note", back_populates="owner", cascade="all, delete-orphan")
+    notes = relationship("Note", back_populates="owner", cascade="all, delete-orphan")
