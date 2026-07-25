@@ -1,10 +1,10 @@
 from sqlalchemy.orm import Session
 from app import models
-from app.schemas.note import NoteCreate
+from app.schemas import note
 
 
 
-def create_note(db: Session, note: NoteCreate, user_id: int):
+def create_note(db: Session, note: note.NoteCreate, user_id: int):
 
     db_note = models.Note(
         title = note.title,
