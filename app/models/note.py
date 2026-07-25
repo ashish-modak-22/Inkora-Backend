@@ -15,3 +15,9 @@ class Note(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+
+    # Each note belongs to one user
+    owner = relationship(
+        "User",
+        back_populates="notes"
+    )
