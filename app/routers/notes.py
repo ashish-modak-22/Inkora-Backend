@@ -5,7 +5,7 @@ from app.core.security import get_current_user
 from app.models.user import User
 from app.models.note import Note
 from app.schemas.note import NoteCreate, NoteResponse
-from app.crud.notes import create_note as create_note_db
+from app.crud.notes import create_note as create_note_db, get_notes
 
 
 
