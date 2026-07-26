@@ -52,3 +52,13 @@ def update_note(db: Session, db_note: Note, note: NoteUpdate) -> Note:
     db.refresh(db_note)
 
     return db_note
+
+
+
+def delete_note(
+    db: Session,
+    db_note: Note
+) -> None:
+
+    db.delete(db_note)
+    db.commit()

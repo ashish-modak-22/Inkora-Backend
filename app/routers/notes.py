@@ -74,7 +74,6 @@ async def update_note_route(
     db_note = get_note_by_id(
         db = db,
         note_id = note_id,
-        user_id = note_id,
         user_id = current_user.id
     )
 
