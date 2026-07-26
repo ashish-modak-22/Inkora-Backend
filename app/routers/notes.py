@@ -4,8 +4,8 @@ from app.database import get_db
 from app.core.security import get_current_user
 from app.models.user import User
 from app.models.note import Note
-from app.schemas.note import NoteCreate, NoteResponse
-from app.crud.notes import create_note as create_note_db, get_notes, get_note_by_id
+from app.schemas.note import NoteCreate, NoteResponse, NoteUpdate
+from app.crud.notes import create_note as create_note_db, get_notes, get_note_by_id, update_note
 
 
 
@@ -60,3 +60,32 @@ async def get_note(
         )
 
     return note
+
+
+
+@router.put("/{note_id}", response_model=NoteResponse)
+async def update_note_route(
+    note_id: int,
+    note: NoteUpdate,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+
+    db_note = get_note_by_id(
+        db = db,
+        note_id = note_id,
+        user_id = note_id,
+        user_id = current_user.id
+    )
+
+    if not db_note:
+        raise HTTPException(
+            status_code=404,
+            detail="Note not found"
+        )
+
+    return update_note(
+        db=db,
+        db_note = db_note,
+        note = note
+    )
