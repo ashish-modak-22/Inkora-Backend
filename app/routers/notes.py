@@ -56,7 +56,7 @@ async def get_note(
     if not note:
         raise HTTPException(
             status_code=404,
-            detail="Note note found"
+            detail="Note not found"
         )
 
     return note

@@ -8,6 +8,12 @@ class NoteCreate(BaseModel):
     content: str
 
 
+
+class NoteUpdate(BaseModel):
+    title: str
+    content: str
+
+
 class NoteResponse(BaseModel):
     id: int
     title: str
