@@ -1,13 +1,13 @@
 from sqlalchemy.orm import Session
 from app import models
-from app.schemas import note
+from app.schemas.note import *
 from typing import List
 from app.models.note import Note
 from typing import Optional
 
 
 
-def create_note(db: Session, note: note.NoteCreate, user_id: int):
+def create_note(db: Session, note: NoteCreate, user_id: int):
 
     db_note = models.Note(
         title = note.title,
@@ -40,3 +40,15 @@ def get_note_by_id(db: Session, note_id: int, user_id: int) -> Optional[Note]:
             Note.user_id == user_id
         ).first()
     )
+
+
+
+def update_note(db: Session, db_note: Note, note: NoteUpdate) -> Note:
+
+    db_note.title = note.title
+    db_note.content = note.content
+
+    db.commit()
+    db.refresh(db_note)
+
+    return db_note
