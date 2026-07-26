@@ -56,7 +56,7 @@ async def login(
 ):
     
     existing_user = db.query(User).filter(
-    User.email == user.email
+    User.email == user.username
     ).first()
 
     if not existing_user:
