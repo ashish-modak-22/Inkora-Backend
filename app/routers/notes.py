@@ -12,6 +12,7 @@ from app.crud.notes import create_note as create_note_db, get_notes
 router = APIRouter(prefix="/notes", tags=["Notes"])
 
 
+
 # Creating a new note for the authenticated user
 @router.post("/", response_model=NoteResponse)
 async def create_note_route(
@@ -24,4 +25,16 @@ async def create_note_route(
         db = db,
         note = note,
         user_id = current_user.id
+    )
+
+
+
+@router.get("/", response_model=list[NoteResponse])
+async def get_all_notes(
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    return get_notes(
+        db=db,
+        user_id=current_user.id
     )
