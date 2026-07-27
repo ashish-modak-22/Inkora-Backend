@@ -4,6 +4,7 @@ from app.schemas.note import *
 from typing import List
 from app.models.note import Note
 from typing import Optional
+from sqlalchemy import or_
 
 
 
@@ -34,8 +35,22 @@ def create_note(db: Session, note: NoteCreate, user_id: int):
 
 
 
-# Pagination
-def get_notes(db: Session, user_id: int, skip: int, limit: int) -> List[Note]:
+# Pagination + searching for notes
+def get_notes(db: Session, user_id: int, skip: int, limit: int, search: Optional[str]=None) -> List[Note]:
+
+    query = (
+        db.query(Note)
+        .filter(Note.user_id == user_id)
+    )
+
+    if search:
+        query = query.filter(
+            or_(
+                Note.title.ilike(f"%{search}%"),
+                Note.content.ilike(f"%{search}%")
+            )
+        )
+        
     return(
         db.query(Note)
         .filter(Note.user_id == user_id)
