@@ -35,8 +35,8 @@ def create_note(db: Session, note: NoteCreate, user_id: int):
 
 
 
-# Pagination + searching for notes
-def get_notes(db: Session, user_id: int, skip: int, limit: int, search: Optional[str]=None) -> List[Note]:
+# Pagination + searching for notes + Sorting support
+def get_notes(db: Session, user_id: int, skip: int, limit: int, search: Optional[str]=None, sort_by: str = "created_at", order: str = "desc") -> List[Note]:
 
     query = (
         db.query(Note)
@@ -50,11 +50,21 @@ def get_notes(db: Session, user_id: int, skip: int, limit: int, search: Optional
                 Note.content.ilike(f"%{search}%")
             )
         )
-        
+
+    if sort_by == "title":
+        sort_column = Note.title
+
+    else:
+        sort_column = Note.created_at
+
+    if order.lower() == "asc":
+        query = query.order_by(sort_column.asc())
+
+    else:
+        query = query.order_by(sort_column.desc())
+
     return(
-        db.query(Note)
-        .filter(Note.user_id == user_id)
-        .order_by(Note.created_at.desc())
+        query
         .offset(skip)
         .limit(limit)
         .all()
