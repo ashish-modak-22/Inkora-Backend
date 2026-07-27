@@ -5,7 +5,7 @@ from app.core.security import get_current_user
 from app.models.user import User
 from app.models.note import Note
 from app.schemas.note import NoteCreate, NoteResponse, NoteUpdate
-from app.crud.notes import create_note as create_note_db, get_notes, get_note_by_id, update_note
+from app.crud.notes import create_note as create_note_db, get_notes, get_note_by_id, update_note, delete_note
 
 
 
@@ -88,3 +88,33 @@ async def update_note_route(
         db_note = db_note,
         note = note
     )
+
+
+
+@router.delete("/{note_id}")
+async def delete_note_route(
+    note_id: int,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+
+    db_note = get_note_by_id(
+        db=db,
+        note_id=note_id,
+        user_id=current_user.id
+    )
+
+    if not db_note:
+        raise HTTPException(
+            status_code=404,
+            detail="Note not found"
+        )
+
+    delete_note(
+        db=db,
+        db_note=db_note
+    )
+
+    return {
+        "message": "Note deleted successfully"
+    }
