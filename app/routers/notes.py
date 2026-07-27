@@ -47,7 +47,8 @@ async def get_all_notes(
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
     page: int = 1,
-    limit: int = 10
+    limit: int = 10,
+    search: str | None = None
 ):
 
     skip = (page-1)*limit
@@ -56,7 +57,8 @@ async def get_all_notes(
         db=db,
         user_id = current_user.id,
         skip=skip,
-        limit=limit
+        limit=limit,
+        search=search
     )
 
 
