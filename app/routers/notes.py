@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 from app.database import get_db
 from app.core.security import get_current_user
@@ -46,11 +46,11 @@ async def create_note_route(
 async def get_all_notes(
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
-    page: int = 1,
-    limit: int = 10,
+    page: int = Query(1, ge=1),
+    limit: int = Query(10, ge=1, le=100),
     search: str | None = None,
-    sort_by: str = "created_at",
-    order: str = "desc"
+    sort_by: str = Query("created_at", pattern="^(created_at|title)$"),
+    order: str = Query("desc", pattern="^(asc|desc)$")
 ):
 
     skip = (page-1)*limit
