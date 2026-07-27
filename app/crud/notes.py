@@ -23,11 +23,25 @@ def create_note(db: Session, note: NoteCreate, user_id: int):
 
 
 
-def get_notes(db: Session, user_id: int) -> List[Note]:
-    return (
+# Used to get all notes in list  
+# def get_notes(db: Session, user_id: int) -> List[Note]:
+#     return (
+#         db.query(Note)
+#         .filter(Note.user_id == user_id)
+#         .order_by(Note.created_at.desc())
+#         .all()
+#     )
+
+
+
+# Pagination
+def get_notes(db: Session, user_id: int, skip: int, limit: int) -> List[Note]:
+    return(
         db.query(Note)
         .filter(Note.user_id == user_id)
         .order_by(Note.created_at.desc())
+        .offset(skip)
+        .limit(limit)
         .all()
     )
 
