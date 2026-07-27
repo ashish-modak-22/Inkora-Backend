@@ -29,14 +29,34 @@ async def create_note_route(
 
 
 
+# Router for getting all notes
+# @router.get("/", response_model=list[NoteResponse])
+# async def get_all_notes(
+#     current_user: User = Depends(get_current_user),
+#     db: Session = Depends(get_db)
+# ):
+#     return get_notes(
+#         db=db,
+#         user_id=current_user.id
+#     )
+
+
+
 @router.get("/", response_model=list[NoteResponse])
 async def get_all_notes(
     current_user: User = Depends(get_current_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    page: int = 1,
+    limit: int = 10
 ):
+
+    skip = (page-1)*limit
+
     return get_notes(
         db=db,
-        user_id=current_user.id
+        user_id = current_user.id,
+        skip=skip,
+        limit=limit
     )
 
 
