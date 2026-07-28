@@ -1,3 +1,7 @@
+# This module will contain all the necessary routers for the HTTP requests
+
+
+
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 from app.database import get_db
