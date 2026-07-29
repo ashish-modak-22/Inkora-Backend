@@ -72,6 +72,7 @@ def get_notes(db: Session, user_id: int, skip: int, limit: int, search: Optional
 
 
 
+# It will return a single note by its ID, if it belongs to the specific user
 def get_note_by_id(db: Session, note_id: int, user_id: int) -> Optional[Note]:
     return (
         db.query(Note).filter(
