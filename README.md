@@ -362,3 +362,11 @@ curl -X POST http://127.0.0.1:8000/notes/ \
   -H "Content-Type: application/json" \
   -d '{"title": "Grocery List", "content": "Eggs, milk, bread"}'
 ```
+
+**Example — Search & paginate notes**
+```bash
+curl "http://127.0.0.1:8000/notes/?page=1&limit=5&search=grocery&sort_by=title&order=asc" \
+  -H "Authorization: Bearer <your_access_token>"
+```
+ 
+---
