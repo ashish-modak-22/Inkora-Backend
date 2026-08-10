@@ -210,22 +210,22 @@ Choose whichever method fits your workflow:
  
 **HTTPS**
 ```bash
-git clone https://github.com/your-username/Inkora-Backend.git
+git clone https://github.com/ashish-modak-22/Inkora-Backend.git
 ```
  
 **SSH**
 ```bash
-git clone git@github.com:your-username/Inkora-Backend.git
+git clone git@github.com:ashish-modak-22/Inkora-Backend.git
 ```
 
 **GitHub CLI**
 ```bash
-gh repo clone your-username/Inkora-Backend
+gh repo clone ashish-modak-22/Inkora-Backend
 ```
  
 **Download as ZIP**
 ```bash
-curl -L -o Inkora-Backend.zip https://github.com/your-username/Inkora-Backend/archive/refs/heads/main.zip
+curl -L -o Inkora-Backend.zip https://github.com/ashish-modak-22/Inkora-Backend/archive/refs/heads/main.zip
 ```
  
 Then move into the project directory:
