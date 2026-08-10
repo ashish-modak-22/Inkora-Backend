@@ -14,7 +14,16 @@ Built with **FastAPI**, **PostgreSQL**, **SQLAlchemy**, and **JWT authentication
 [![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0-D71F00?style=for-the-badge&logo=python&logoColor=white)](https://www.sqlalchemy.org/)
 [![Alembic](https://img.shields.io/badge/Alembic-Migrations-6BA81E?style=for-the-badge)](https://alembic.sqlalchemy.org/)
 [![JWT](https://img.shields.io/badge/Auth-JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)](https://jwt.io/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](./LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](CONTRIBUTING.md)
 [![Code Style](https://img.shields.io/badge/code%20style-PEP8-000000.svg?style=for-the-badge)](https://peps.python.org/pep-0008/)
-[![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge)](https://github.com/your-username/Inkora-Backend/graphs/commit-activity)
+
+[Features](#-features) •
+[Tech Stack](#-tech-stack) •
+[Architecture](#-project-architecture) •
+[Getting Started](#-getting-started) •
+[API Reference](#-api-reference) •
+[Roadmap](#-roadmap) •
+[Contributing](#-contributing)
+ 
+</div>
+---
