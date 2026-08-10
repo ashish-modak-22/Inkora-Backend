@@ -247,3 +247,12 @@ source venv/bin/activate
  
 </td>
 <td>
+
+```powershell
+python -m venv venv
+venv\Scripts\Activate.ps1
+```
+ 
+</td>
+</tr>
+</table>
