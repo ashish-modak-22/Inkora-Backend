@@ -233,3 +233,17 @@ Then move into the project directory:
 cd Inkora-Backend
 
 ```
+
+### 2️⃣ Create & Activate a Virtual Environment
+ 
+<table>
+<tr><th>macOS / Linux</th><th>Windows (PowerShell)</th></tr>
+<tr>
+<td>
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+ 
+</td>
+<td>
