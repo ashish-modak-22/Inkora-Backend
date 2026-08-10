@@ -203,3 +203,17 @@ Make sure you have the following installed:
 | PostgreSQL | 14+ | Locally installed, or a hosted instance (Supabase, Railway, Neon, etc.) |
 | pip | latest | Bundled with Python |
 | Git | any recent | For cloning the repository |
+
+### 1️⃣ Clone the Repository
+ 
+Choose whichever method fits your workflow:
+ 
+**HTTPS**
+```bash
+git clone https://github.com/your-username/Inkora-Backend.git
+```
+ 
+**SSH**
+```bash
+git clone git@github.com:your-username/Inkora-Backend.git
+```
