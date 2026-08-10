@@ -217,3 +217,19 @@ git clone https://github.com/your-username/Inkora-Backend.git
 ```bash
 git clone git@github.com:your-username/Inkora-Backend.git
 ```
+
+**GitHub CLI**
+```bash
+gh repo clone your-username/Inkora-Backend
+```
+ 
+**Download as ZIP**
+```bash
+curl -L -o Inkora-Backend.zip https://github.com/your-username/Inkora-Backend/archive/refs/heads/main.zip
+```
+ 
+Then move into the project directory:
+```bash
+cd Inkora-Backend
+
+```
