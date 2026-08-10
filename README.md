@@ -404,3 +404,12 @@ Contributions, issues, and feature requests are welcome!
 Please make sure your code follows PEP 8 conventions and includes clear docstrings/comments where relevant.
  
 ---
+
+## 🧪 Running in Production
+ 
+For production deployments, avoid `--reload` and run behind a process manager / reverse proxy:
+ 
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4
+```
+ 
