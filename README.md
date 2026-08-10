@@ -45,3 +45,11 @@ The project is intentionally structured the way a production FastAPI service sho
 - 🗒️ **Full Notes CRUD** — Create, read, update, and delete notes scoped to the authenticated user
 - 🔎 **Search, Sort & Paginate** — Query notes by keyword (title/content), sort by `created_at` or `title`, and paginate results
 - 🧾 **Ownership-Scoped Access** — Every note operation is strictly scoped to the requesting user; no cross-user data leakage
+- 🗃️ **Relational Data Modeling** — One-to-many `User → Notes` relationship enforced at the database level via SQLAlchemy ORM
+- 🧬 **Versioned Database Migrations** — Schema changes tracked and reproducible with Alembic
+- 📑 **Auto-Generated API Docs** — Interactive Swagger UI and ReDoc out of the box, courtesy of FastAPI
+- 🌍 **Environment-Based Configuration** — Twelve-factor style config via `.env`, kept out of version control
+- ⚡ **Async-Ready & Type-Safe** — Built on modern Python typing and Pydantic v2 schema validation
+  
+---
+ 
