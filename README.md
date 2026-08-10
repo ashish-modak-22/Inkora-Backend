@@ -112,3 +112,7 @@ uvicorn==0.51.0
 </details>
 
 ---
+
+## 🏗️ Project Architecture
+ 
+The codebase follows a **layered architecture**, separating HTTP concerns (routers) from validation (schemas), persistence (models/crud), and cross-cutting logic (core/security):
