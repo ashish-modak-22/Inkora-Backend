@@ -38,3 +38,10 @@ The project is intentionally structured the way a production FastAPI service sho
 > This repository contains the **backend/API only**. It is designed to be consumed by any client — a web frontend, a mobile app, or a third-party integration — via standard HTTP/JSON.
  
 ---
+
+## ✨ Features
+ 
+- 🔐 **Secure Authentication** — User registration and login with `bcrypt`-hashed passwords and stateless **JWT** access tokens
+- 🗒️ **Full Notes CRUD** — Create, read, update, and delete notes scoped to the authenticated user
+- 🔎 **Search, Sort & Paginate** — Query notes by keyword (title/content), sort by `created_at` or `title`, and paginate results
+- 🧾 **Ownership-Scoped Access** — Every note operation is strictly scoped to the requesting user; no cross-user data leakage
