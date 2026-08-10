@@ -378,3 +378,16 @@ curl "http://127.0.0.1:8000/notes/?page=1&limit=5&search=grocery&sort_by=title&o
 - All note endpoints validate resource ownership at the query level (`user_id` filter), preventing IDOR-style access to other users' data
 - Sensitive configuration (`DATABASE_URL`, `SECRET_KEY`) is loaded exclusively from environment variables, never hardcoded
 ---
+
+## 🗺️ Roadmap
+ 
+- [ ] Refresh token / token rotation support
+- [ ] Rate limiting on authentication endpoints
+- [ ] Note tagging & categorization
+- [ ] Soft-delete / trash & restore for notes
+- [ ] Automated test suite (pytest + httpx)
+- [ ] Dockerfile & docker-compose for one-command local setup
+- [ ] CI/CD pipeline (GitHub Actions) for lint, test, and deploy
+- [ ] Rich-text / markdown note content support
+
+---
