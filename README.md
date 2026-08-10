@@ -53,3 +53,21 @@ The project is intentionally structured the way a production FastAPI service sho
   
 ---
  
+## 🧰 Tech Stack
+ 
+| Layer                  | Technology                                                                 | Purpose                                              |
+|-------------------------|-----------------------------------------------------------------------------|-------------------------------------------------------|
+| **Language**            | [Python 3.11+](https://www.python.org/)                                    | Core application language                              |
+| **Web Framework**       | [FastAPI](https://fastapi.tiangolo.com/)                                   | High-performance async API framework                   |
+| **ASGI Server**         | [Uvicorn](https://www.uvicorn.org/)                                        | Lightning-fast ASGI server for running the app          |
+| **ORM**                 | [SQLAlchemy 2.0](https://www.sqlalchemy.org/)                              | Database modeling & query layer                        |
+| **Database**            | [PostgreSQL](https://www.postgresql.org/)                                  | Primary relational data store                           |
+| **DB Driver**           | [psycopg2-binary](https://pypi.org/project/psycopg2-binary/)               | PostgreSQL adapter for Python                            |
+| **Migrations**          | [Alembic](https://alembic.sqlalchemy.org/)                                 | Version-controlled schema migrations                    |
+| **Validation**          | [Pydantic v2](https://docs.pydantic.dev/)                                  | Request/response schema validation                       |
+| **Auth**                | [python-jose](https://python-jose.readthedocs.io/) + [passlib](https://passlib.readthedocs.io/) / [bcrypt](https://pypi.org/project/bcrypt/) | JWT encoding/decoding & password hashing |
+| **Config Management**   | [python-dotenv](https://pypi.org/project/python-dotenv/)                   | Loading environment variables from `.env`                |
+| **Email Validation**    | [email-validator](https://pypi.org/project/email-validator/)               | RFC-compliant email field validation                     |
+ 
+<details>
+<summary><strong>📦 Full dependency list</strong> (from <code>requirements.txt</code>)</summary>
