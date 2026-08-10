@@ -272,3 +272,16 @@ touch .env   # macOS/Linux
 # or manually create the file on Windows
 ```
  
+ 
+Populate it with the following variables:
+ 
+```dotenv
+# PostgreSQL connection string
+DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<database_name>
+ 
+# JWT configuration
+SECRET_KEY=your-super-secret-key-change-this-in-production
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=60
+```
+ 
