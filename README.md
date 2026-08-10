@@ -173,3 +173,21 @@ Client Request
       ▼
  Pydantic Response Schema  ──▶  JSON Response
 ```
+
+### Data model
+ 
+```
+┌───────────────────┐        1        N     ┌───────────────────┐
+│       User         │───────────────────────│        Note        │
+├───────────────────┤                        ├───────────────────┤
+│ id (PK)             │                        │ id (PK)             │
+│ name                │                        │ title               │
+│ email (unique)      │                        │ content             │
+│ password_hash       │                        │ created_at          │
+└───────────────────┘                        │ updated_at          │
+                                                │ user_id (FK → User) │
+                                                └───────────────────┘
+```
+ 
+---
+ 
