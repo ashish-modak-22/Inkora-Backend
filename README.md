@@ -421,3 +421,10 @@ Recommended production checklist:
 - [ ] Put the app behind HTTPS (e.g., via Nginx, Caddy, or a managed platform)
 - [ ] Restrict CORS origins to your actual frontend domain(s)
 ---
+
+## 📄 License
+ 
+This project is licensed under the **MIT License** — see the [LICENSE](./LICENSE) file for details.
+ 
+---
+ 
