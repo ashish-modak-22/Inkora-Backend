@@ -287,3 +287,17 @@ ACCESS_TOKEN_EXPIRE_MINUTES=60
  
 > 🔒 **Security note:** Generate a strong `SECRET_KEY` for production, e.g. via `python -c "import secrets; print(secrets.token_hex(32))"`. Never commit your `.env` file — it is already excluded via `.gitignore`.
  
+### 5️⃣ Run Database Migrations
+ 
+Apply all Alembic migrations to provision the `users` and `notes` tables:
+ 
+```bash
+alembic upgrade head
+```
+
+To generate a new migration after modifying a model:
+```bash
+alembic revision --autogenerate -m "describe your change"
+alembic upgrade head
+```
+ 
