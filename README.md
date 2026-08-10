@@ -413,3 +413,11 @@ For production deployments, avoid `--reload` and run behind a process manager / 
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4
 ```
  
+Recommended production checklist:
+ 
+- [ ] Set a strong, unique `SECRET_KEY`
+- [ ] Use a managed PostgreSQL instance with connection pooling
+- [ ] Run `alembic upgrade head` as part of your deployment pipeline
+- [ ] Put the app behind HTTPS (e.g., via Nginx, Caddy, or a managed platform)
+- [ ] Restrict CORS origins to your actual frontend domain(s)
+---
