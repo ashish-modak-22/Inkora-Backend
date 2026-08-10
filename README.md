@@ -422,9 +422,9 @@ Recommended production checklist:
 - [ ] Restrict CORS origins to your actual frontend domain(s)
 ---
 
-## 📄 License
+**Inkora Backend** — maintained by Ashish Modak (https://github.com/ashish-modak-22)
  
-This project is licensed under the **MIT License** — see the [LICENSE](./LICENSE) file for details.
+<div align="center">
+If you find this project useful, consider giving it a ⭐ on GitHub!
  
----
- 
+</div>
