@@ -355,3 +355,10 @@ curl -X POST http://127.0.0.1:8000/auth/login \
   -d "username=ada@example.com&password=supersecret"
 ```
  
+**Example — Create a note (authenticated)**
+```bash
+curl -X POST http://127.0.0.1:8000/notes/ \
+  -H "Authorization: Bearer <your_access_token>" \
+  -H "Content-Type: application/json" \
+  -d '{"title": "Grocery List", "content": "Eggs, milk, bread"}'
+```
