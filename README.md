@@ -391,3 +391,16 @@ curl "http://127.0.0.1:8000/notes/?page=1&limit=5&search=grocery&sort_by=title&o
 - [ ] Rich-text / markdown note content support
 
 ---
+
+## 🤝 Contributing
+ 
+Contributions, issues, and feature requests are welcome!
+ 
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m "Add amazing feature"`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+Please make sure your code follows PEP 8 conventions and includes clear docstrings/comments where relevant.
+ 
+---
