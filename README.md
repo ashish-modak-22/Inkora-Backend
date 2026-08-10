@@ -191,3 +191,15 @@ Client Request
  
 ---
  
+## 🚀 Getting Started
+ 
+### Prerequisites
+ 
+Make sure you have the following installed:
+ 
+| Requirement | Version | Notes |
+|---|---|---|
+| Python | 3.11 or higher | [Download](https://www.python.org/downloads/) |
+| PostgreSQL | 14+ | Locally installed, or a hosted instance (Supabase, Railway, Neon, etc.) |
+| pip | latest | Bundled with Python |
+| Git | any recent | For cloning the repository |
