@@ -26,4 +26,9 @@ Built with **FastAPI**, **PostgreSQL**, **SQLAlchemy**, and **JWT authentication
 [Contributing](#-contributing)
  
 </div>
+
 ---
+
+## 📖 Overview
+ 
+**Inkora** is the backend service powering a full-featured notes application. It exposes a clean, versionable REST API that handles **user registration and authentication**, **JWT-based session management**, and full **CRUD operations on notes**, complete with **pagination, search, and sorting**.
