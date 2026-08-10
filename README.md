@@ -370,3 +370,11 @@ curl "http://127.0.0.1:8000/notes/?page=1&limit=5&search=grocery&sort_by=title&o
 ```
  
 ---
+
+## 🔒 Security Highlights
+ 
+- Passwords are never stored in plaintext — hashed using **bcrypt** with per-password salts
+- Authentication uses **stateless JWTs** signed with a server-side secret key
+- All note endpoints validate resource ownership at the query level (`user_id` filter), preventing IDOR-style access to other users' data
+- Sensitive configuration (`DATABASE_URL`, `SECRET_KEY`) is loaded exclusively from environment variables, never hardcoded
+---
