@@ -301,3 +301,12 @@ alembic revision --autogenerate -m "describe your change"
 alembic upgrade head
 ```
  
+### 6️⃣ Run the Development Server
+ 
+```bash
+uvicorn app.main:app --reload
+```
+ 
+The API will be live at **`http://127.0.0.1:8000`**.
+ 
+---
