@@ -285,3 +285,5 @@ ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=60
 ```
  
+> 🔒 **Security note:** Generate a strong `SECRET_KEY` for production, e.g. via `python -c "import secrets; print(secrets.token_hex(32))"`. Never commit your `.env` file — it is already excluded via `.gitignore`.
+ 
