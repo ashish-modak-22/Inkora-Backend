@@ -256,3 +256,19 @@ venv\Scripts\Activate.ps1
 </td>
 </tr>
 </table>
+
+### 3️⃣ Install Dependencies
+ 
+```bash
+pip install -r requirements.txt
+```
+ 
+### 4️⃣ Configure Environment Variables
+ 
+Create a `.env` file in the project root:
+ 
+```bash
+touch .env   # macOS/Linux
+# or manually create the file on Windows
+```
+ 
