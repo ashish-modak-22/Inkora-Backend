@@ -348,3 +348,10 @@ curl -X POST http://127.0.0.1:8000/auth/register \
   -d '{"name": "Ada Lovelace", "email": "ada@example.com", "password": "supersecret"}'
 ```
  
+**Example — Login and retrieve a token**
+```bash
+curl -X POST http://127.0.0.1:8000/auth/login \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "username=ada@example.com&password=supersecret"
+```
+ 
