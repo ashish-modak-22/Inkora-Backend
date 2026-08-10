@@ -116,3 +116,41 @@ uvicorn==0.51.0
 ## 🏗️ Project Architecture
  
 The codebase follows a **layered architecture**, separating HTTP concerns (routers) from validation (schemas), persistence (models/crud), and cross-cutting logic (core/security):
+
+```
+Inkora-Backend/
+├── app/
+│   ├── main.py                # FastAPI app entrypoint & router registration
+│   ├── database.py            # Engine, session factory & Base declarative model
+│   │
+│   ├── core/
+│   │   └── security.py        # Password hashing, JWT creation/validation, current-user dependency
+│   │
+│   ├── models/                # SQLAlchemy ORM models
+│   │   ├── user.py            # User table definition
+│   │   └── note.py            # Note table definition (FK -> User)
+│   │
+│   ├── schemas/                # Pydantic request/response models
+│   │   ├── user.py            # UserRegister, UserLogin, UserResponse, Token
+│   │   └── note.py            # NoteCreate, NoteUpdate, NoteResponse
+│   │
+│   ├── crud/                   # Database access / business logic layer
+│   │   └── notes.py            # Create, read (paginated/search/sort), update, delete
+│   │
+│   ├── routers/                 # API route definitions
+│   │   ├── auth.py             # /auth/register, /auth/login, /auth/me
+│   │   └── notes.py            # /notes CRUD endpoints
+│   │
+│   └── dependencies/            # Shared FastAPI dependencies
+│
+├── alembic/
+│   ├── env.py                   # Alembic runtime configuration
+│   ├── script.py.mako           # Migration file template
+│   └── versions/                 # Individual migration scripts
+│       ├── 2bdc23e770d6_create_users_table.py
+│       └── 1de07b0c8402_create_notes_table.py
+│
+├── alembic.ini                   # Alembic configuration
+├── requirements.txt               # Python dependencies
+└── .gitignore
+```
