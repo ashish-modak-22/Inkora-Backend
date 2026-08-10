@@ -154,3 +154,22 @@ Inkora-Backend/
 ├── requirements.txt               # Python dependencies
 └── .gitignore
 ```
+
+ 
+### Request lifecycle
+ 
+```
+Client Request
+      │
+      ▼
+ FastAPI Router  ──▶  Pydantic Schema (validation)
+      │
+      ▼
+ Auth Dependency (JWT decode via core/security.py)
+      │
+      ▼
+   CRUD Layer  ──▶  SQLAlchemy ORM  ──▶  PostgreSQL
+      │
+      ▼
+ Pydantic Response Schema  ──▶  JSON Response
+```
