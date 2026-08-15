@@ -1,4 +1,6 @@
-# To run the main file: "uvicorn app.main:app --reload"
+# To run the main file on local network: "uvicorn app.main:app --reload"
+# To run the main file on any network: "python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+
 
 
 from fastapi import FastAPI
@@ -30,5 +32,3 @@ def home():
     return {
         "message": "Welcome to NotesApp Backend"
     }
-
-

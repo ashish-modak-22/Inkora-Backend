@@ -12,6 +12,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 
 
 
+
 router = APIRouter(
     prefix = "/auth",
     tags = ["Authentication"]    
@@ -94,3 +95,11 @@ async def get_profile(current_user: User = Depends(get_current_user)):
         "name": current_user.name,
         "email": current_user.email
     }
+
+
+
+@router.delete("/me", status_code=204)
+async def delete_account(current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+
+    db.delete(current_user)
+    db.commit()
