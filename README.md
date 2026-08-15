@@ -1,0 +1,430 @@
+<div align="center">
+ 
+# 📝 Inkora — Backend
+ 
+### A secure, scalable REST API for a modern note-taking application
+
+Built with **FastAPI**, **PostgreSQL**, **SQLAlchemy**, and **JWT authentication** — designed with clean architecture, database migrations, and production-ready patterns from day one.
+ 
+<br/>
+
+[![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.139-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0-D71F00?style=for-the-badge&logo=python&logoColor=white)](https://www.sqlalchemy.org/)
+[![Alembic](https://img.shields.io/badge/Alembic-Migrations-6BA81E?style=for-the-badge)](https://alembic.sqlalchemy.org/)
+[![JWT](https://img.shields.io/badge/Auth-JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)](https://jwt.io/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](CONTRIBUTING.md)
+[![Code Style](https://img.shields.io/badge/code%20style-PEP8-000000.svg?style=for-the-badge)](https://peps.python.org/pep-0008/)
+
+[Features](#-features) •
+[Tech Stack](#-tech-stack) •
+[Architecture](#-project-architecture) •
+[Getting Started](#-getting-started) •
+[API Reference](#-api-reference) •
+[Roadmap](#-roadmap) •
+[Contributing](#-contributing)
+ 
+</div>
+
+---
+
+## 📖 Overview
+ 
+**Inkora** is the backend service powering a full-featured notes application. It exposes a clean, versionable REST API that handles **user registration and authentication**, **JWT-based session management**, and full **CRUD operations on notes**, complete with **pagination, search, and sorting**.
+
+The project is intentionally structured the way a production FastAPI service should be — routers, schemas, models, and business logic (`crud`) are cleanly separated, database schema evolution is handled through **Alembic migrations** rather than ad-hoc changes, and secrets/configuration are isolated via environment variables.
+
+> This repository contains the **backend/API only**. It is designed to be consumed by any client — a web frontend, a mobile app, or a third-party integration — via standard HTTP/JSON.
+ 
+---
+
+## ✨ Features
+ 
+- 🔐 **Secure Authentication** — User registration and login with `bcrypt`-hashed passwords and stateless **JWT** access tokens
+- 🗒️ **Full Notes CRUD** — Create, read, update, and delete notes scoped to the authenticated user
+- 🔎 **Search, Sort & Paginate** — Query notes by keyword (title/content), sort by `created_at` or `title`, and paginate results
+- 🧾 **Ownership-Scoped Access** — Every note operation is strictly scoped to the requesting user; no cross-user data leakage
+- 🗃️ **Relational Data Modeling** — One-to-many `User → Notes` relationship enforced at the database level via SQLAlchemy ORM
+- 🧬 **Versioned Database Migrations** — Schema changes tracked and reproducible with Alembic
+- 📑 **Auto-Generated API Docs** — Interactive Swagger UI and ReDoc out of the box, courtesy of FastAPI
+- 🌍 **Environment-Based Configuration** — Twelve-factor style config via `.env`, kept out of version control
+- ⚡ **Async-Ready & Type-Safe** — Built on modern Python typing and Pydantic v2 schema validation
+  
+---
+ 
+## 🧰 Tech Stack
+ 
+| Layer                  | Technology                                                                 | Purpose                                              |
+|-------------------------|-----------------------------------------------------------------------------|-------------------------------------------------------|
+| **Language**            | [Python 3.11+](https://www.python.org/)                                    | Core application language                              |
+| **Web Framework**       | [FastAPI](https://fastapi.tiangolo.com/)                                   | High-performance async API framework                   |
+| **ASGI Server**         | [Uvicorn](https://www.uvicorn.org/)                                        | Lightning-fast ASGI server for running the app          |
+| **ORM**                 | [SQLAlchemy 2.0](https://www.sqlalchemy.org/)                              | Database modeling & query layer                        |
+| **Database**            | [PostgreSQL](https://www.postgresql.org/)                                  | Primary relational data store                           |
+| **DB Driver**           | [psycopg2-binary](https://pypi.org/project/psycopg2-binary/)               | PostgreSQL adapter for Python                            |
+| **Migrations**          | [Alembic](https://alembic.sqlalchemy.org/)                                 | Version-controlled schema migrations                    |
+| **Validation**          | [Pydantic v2](https://docs.pydantic.dev/)                                  | Request/response schema validation                       |
+| **Auth**                | [python-jose](https://python-jose.readthedocs.io/) + [passlib](https://passlib.readthedocs.io/) / [bcrypt](https://pypi.org/project/bcrypt/) | JWT encoding/decoding & password hashing |
+| **Config Management**   | [python-dotenv](https://pypi.org/project/python-dotenv/)                   | Loading environment variables from `.env`                |
+| **Email Validation**    | [email-validator](https://pypi.org/project/email-validator/)               | RFC-compliant email field validation                     |
+ 
+<details>
+<summary><strong>📦 Full dependency list</strong> (from <code>requirements.txt</code>)</summary>
+
+
+```
+alembic==1.18.5
+annotated-doc==0.0.4
+annotated-types==0.7.0
+anyio==4.14.2
+bcrypt==5.0.0
+cffi==2.1.0
+click==8.4.2
+colorama==0.4.6
+cryptography==49.0.0
+dnspython==2.8.0
+ecdsa==0.19.2
+email-validator==2.3.0
+fastapi==0.139.2
+greenlet==3.5.3
+h11==0.16.0
+idna==3.18
+Mako==1.3.12
+MarkupSafe==3.0.3
+passlib==1.7.4
+psycopg2-binary==2.9.12
+pyasn1==0.6.4
+pycparser==3.0
+pydantic==2.13.4
+pydantic_core==2.46.4
+python-dotenv==1.2.2
+python-jose==3.5.0
+python-multipart==0.0.32
+rsa==4.9.1
+six==1.17.0
+SQLAlchemy==2.0.51
+typing-inspection==0.4.2
+typing_extensions==4.16.0
+uvicorn==0.51.0
+```
+ 
+</details>
+
+---
+
+## 🏗️ Project Architecture
+ 
+The codebase follows a **layered architecture**, separating HTTP concerns (routers) from validation (schemas), persistence (models/crud), and cross-cutting logic (core/security):
+
+```
+Inkora-Backend/
+├── app/
+│   ├── main.py                # FastAPI app entrypoint & router registration
+│   ├── database.py            # Engine, session factory & Base declarative model
+│   │
+│   ├── core/
+│   │   └── security.py        # Password hashing, JWT creation/validation, current-user dependency
+│   │
+│   ├── models/                # SQLAlchemy ORM models
+│   │   ├── user.py            # User table definition
+│   │   └── note.py            # Note table definition (FK -> User)
+│   │
+│   ├── schemas/                # Pydantic request/response models
+│   │   ├── user.py            # UserRegister, UserLogin, UserResponse, Token
+│   │   └── note.py            # NoteCreate, NoteUpdate, NoteResponse
+│   │
+│   ├── crud/                   # Database access / business logic layer
+│   │   └── notes.py            # Create, read (paginated/search/sort), update, delete
+│   │
+│   ├── routers/                 # API route definitions
+│   │   ├── auth.py             # /auth/register, /auth/login, /auth/me
+│   │   └── notes.py            # /notes CRUD endpoints
+│   │
+│   └── dependencies/            # Shared FastAPI dependencies
+│
+├── alembic/
+│   ├── env.py                   # Alembic runtime configuration
+│   ├── script.py.mako           # Migration file template
+│   └── versions/                 # Individual migration scripts
+│       ├── 2bdc23e770d6_create_users_table.py
+│       └── 1de07b0c8402_create_notes_table.py
+│
+├── alembic.ini                   # Alembic configuration
+├── requirements.txt               # Python dependencies
+└── .gitignore
+```
+
+ 
+### Request lifecycle
+ 
+```
+Client Request
+      │
+      ▼
+ FastAPI Router  ──▶  Pydantic Schema (validation)
+      │
+      ▼
+ Auth Dependency (JWT decode via core/security.py)
+      │
+      ▼
+   CRUD Layer  ──▶  SQLAlchemy ORM  ──▶  PostgreSQL
+      │
+      ▼
+ Pydantic Response Schema  ──▶  JSON Response
+```
+
+### Data model
+ 
+```
+┌───────────────────┐        1        N     ┌───────────────────┐
+│       User         │───────────────────────│        Note        │
+├───────────────────┤                        ├───────────────────┤
+│ id (PK)             │                        │ id (PK)             │
+│ name                │                        │ title               │
+│ email (unique)      │                        │ content             │
+│ password_hash       │                        │ created_at          │
+└───────────────────┘                        │ updated_at          │
+                                                │ user_id (FK → User) │
+                                                └───────────────────┘
+```
+ 
+---
+ 
+## 🚀 Getting Started
+ 
+### Prerequisites
+ 
+Make sure you have the following installed:
+ 
+| Requirement | Version | Notes |
+|---|---|---|
+| Python | 3.11 or higher | [Download](https://www.python.org/downloads/) |
+| PostgreSQL | 14+ | Locally installed, or a hosted instance (Supabase, Railway, Neon, etc.) |
+| pip | latest | Bundled with Python |
+| Git | any recent | For cloning the repository |
+
+### 1️⃣ Clone the Repository
+ 
+Choose whichever method fits your workflow:
+ 
+**HTTPS**
+```bash
+git clone https://github.com/ashish-modak-22/Inkora-Backend.git
+```
+ 
+**SSH**
+```bash
+git clone git@github.com:ashish-modak-22/Inkora-Backend.git
+```
+
+**GitHub CLI**
+```bash
+gh repo clone ashish-modak-22/Inkora-Backend
+```
+ 
+**Download as ZIP**
+```bash
+curl -L -o Inkora-Backend.zip https://github.com/ashish-modak-22/Inkora-Backend/archive/refs/heads/main.zip
+```
+ 
+Then move into the project directory:
+```bash
+cd Inkora-Backend
+
+```
+
+### 2️⃣ Create & Activate a Virtual Environment
+ 
+<table>
+<tr><th>macOS / Linux</th><th>Windows (PowerShell)</th></tr>
+<tr>
+<td>
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+ 
+</td>
+<td>
+
+```powershell
+python -m venv venv
+venv\Scripts\Activate.ps1
+```
+ 
+</td>
+</tr>
+</table>
+
+### 3️⃣ Install Dependencies
+ 
+```bash
+pip install -r requirements.txt
+```
+ 
+### 4️⃣ Configure Environment Variables
+ 
+Create a `.env` file in the project root:
+ 
+```bash
+touch .env   # macOS/Linux
+# or manually create the file on Windows
+```
+ 
+ 
+Populate it with the following variables:
+ 
+```dotenv
+# PostgreSQL connection string
+DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<database_name>
+ 
+# JWT configuration
+SECRET_KEY=your-super-secret-key-change-this-in-production
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=60
+```
+ 
+> 🔒 **Security note:** Generate a strong `SECRET_KEY` for production, e.g. via `python -c "import secrets; print(secrets.token_hex(32))"`. Never commit your `.env` file — it is already excluded via `.gitignore`.
+ 
+### 5️⃣ Run Database Migrations
+ 
+Apply all Alembic migrations to provision the `users` and `notes` tables:
+ 
+```bash
+alembic upgrade head
+```
+
+To generate a new migration after modifying a model:
+```bash
+alembic revision --autogenerate -m "describe your change"
+alembic upgrade head
+```
+ 
+### 6️⃣ Run the Development Server
+ 
+```bash
+uvicorn app.main:app --reload
+```
+ 
+The API will be live at **`http://127.0.0.1:8000`**.
+ 
+---
+
+## 📚 API Reference
+ 
+Once running, interactive documentation is auto-generated by FastAPI:
+ 
+| Interface | URL |
+|---|---|
+| **Swagger UI** | `http://127.0.0.1:8000/docs` |
+| **ReDoc** | `http://127.0.0.1:8000/redoc` |
+| **OpenAPI Schema** | `http://127.0.0.1:8000/openapi.json` |
+
+ 
+### Authentication — `/auth`
+ 
+| Method | Endpoint | Description | Auth Required |
+|---|---|---|:---:|
+| `POST` | `/auth/register` | Register a new user account | ❌ |
+| `POST` | `/auth/login` | Authenticate and receive a JWT access token | ❌ |
+| `GET` | `/auth/me` | Get the currently authenticated user's profile | ✅ 
+
+
+### Notes — `/notes`
+ 
+| Method | Endpoint | Description | Auth Required |
+|---|---|---|:---:|
+| `POST` | `/notes/` | Create a new note | ✅ |
+| `GET` | `/notes/` | List notes — supports `page`, `limit`, `search`, `sort_by`, `order` | ✅ |
+| `GET` | `/notes/{note_id}` | Retrieve a single note by ID | ✅ |
+| `PUT` | `/notes/{note_id}` | Update an existing note | ✅ |
+| `DELETE` | `/notes/{note_id}` | Delete a note | ✅ |
+ 
+**Example — Register a user**
+```bash
+curl -X POST http://127.0.0.1:8000/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Ada Lovelace", "email": "ada@example.com", "password": "supersecret"}'
+```
+ 
+**Example — Login and retrieve a token**
+```bash
+curl -X POST http://127.0.0.1:8000/auth/login \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "username=ada@example.com&password=supersecret"
+```
+ 
+**Example — Create a note (authenticated)**
+```bash
+curl -X POST http://127.0.0.1:8000/notes/ \
+  -H "Authorization: Bearer <your_access_token>" \
+  -H "Content-Type: application/json" \
+  -d '{"title": "Grocery List", "content": "Eggs, milk, bread"}'
+```
+
+**Example — Search & paginate notes**
+```bash
+curl "http://127.0.0.1:8000/notes/?page=1&limit=5&search=grocery&sort_by=title&order=asc" \
+  -H "Authorization: Bearer <your_access_token>"
+```
+ 
+---
+
+## 🔒 Security Highlights
+ 
+- Passwords are never stored in plaintext — hashed using **bcrypt** with per-password salts
+- Authentication uses **stateless JWTs** signed with a server-side secret key
+- All note endpoints validate resource ownership at the query level (`user_id` filter), preventing IDOR-style access to other users' data
+- Sensitive configuration (`DATABASE_URL`, `SECRET_KEY`) is loaded exclusively from environment variables, never hardcoded
+---
+
+## 🗺️ Roadmap
+ 
+- [ ] Refresh token / token rotation support
+- [ ] Rate limiting on authentication endpoints
+- [ ] Note tagging & categorization
+- [ ] Soft-delete / trash & restore for notes
+- [ ] Automated test suite (pytest + httpx)
+- [ ] Dockerfile & docker-compose for one-command local setup
+- [ ] CI/CD pipeline (GitHub Actions) for lint, test, and deploy
+- [ ] Rich-text / markdown note content support
+
+---
+
+## 🤝 Contributing
+ 
+Contributions, issues, and feature requests are welcome!
+ 
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m "Add amazing feature"`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+Please make sure your code follows PEP 8 conventions and includes clear docstrings/comments where relevant.
+ 
+---
+
+## 🧪 Running in Production
+ 
+For production deployments, avoid `--reload` and run behind a process manager / reverse proxy:
+ 
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4
+```
+ 
+Recommended production checklist:
+ 
+- [ ] Set a strong, unique `SECRET_KEY`
+- [ ] Use a managed PostgreSQL instance with connection pooling
+- [ ] Run `alembic upgrade head` as part of your deployment pipeline
+- [ ] Put the app behind HTTPS (e.g., via Nginx, Caddy, or a managed platform)
+- [ ] Restrict CORS origins to your actual frontend domain(s)
+---
+
+**Inkora Backend** — maintained by Ashish Modak (https://github.com/ashish-modak-22)
+ 
+<div align="center">
+If you find this project useful, consider giving it a ⭐ on GitHub!
+ 
+</div>
